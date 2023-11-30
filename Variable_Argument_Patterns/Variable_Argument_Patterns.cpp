@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 
+
 double getSum(double x) {
 	return x;
 }
@@ -17,6 +18,7 @@ int main()
 {
 	double sum = getSum(1, 2, 3, 4, 5);
 	cout << sum;
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
