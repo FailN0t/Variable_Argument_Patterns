@@ -2,34 +2,38 @@
 //
 
 #include <iostream>
+#include <initializer_list>
 using namespace std;
 
-void print() {
-}
-template<class First, class... Other>
-void print(const First& first, const Other&... other) {
-	cout << first << endl;
-	print(other...);
-}
 
-class Point {
-	int x;
-	int y;
+class Array {
+	int* arr;
+	size_t size;
 public:
-	Point(int x, int y) : x{ x }, y{ y } {}
-	friend ostream& operator<<(ostream& ost, Point& point) {
-		ost << "(" << point.x << ", " << point.y << ")";
-		return ost;
+	Array(const initializer_list<int>& list) : size{ list.size() } {
+		arr = new int[list.size()];
+		int i = 0;
+		for (auto element : list)
+		{
+			arr[i] = element;
+			i++;
+		}
 	}
-
+	void print() {
+		for (size_t i = 0; i < size; i++)
+		{
+			cout << arr[i] << ", ";
+		}
+	}
 };
+
 
 int main()
 {
-	Point point(3, 4);
-	print("sdafasdf", 1, "afdsasdasd", 0.4, "sdfsad", point);
 
 
+	Array array{ 2 ,3, 4, 5, 6, 7, 8 };
+	array.print();
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
