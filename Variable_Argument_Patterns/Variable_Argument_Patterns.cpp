@@ -4,20 +4,31 @@
 #include <iostream>
 using namespace std;
 
-
-double getSum(double x) {
-	return x;
+void print() {
+}
+template<class First, class... Other>
+void print(const First& first, const Other&... other) {
+	cout << first << endl;
+	print(other...);
 }
 
-template<class... Args>
-double getSum(double x, Args... args) {
-	return x + getSum(args...);
-}
+class Point {
+	int x;
+	int y;
+public:
+	Point(int x, int y) : x{ x }, y{ y } {}
+	friend ostream& operator<<(ostream& ost, Point point) {
+		ost << "(" << point.x << ", " << point.y << ")";
+		return ost;
+	}
+
+};
 
 int main()
 {
-	double sum = getSum(1, 2, 3, 4, 5);
-	cout << sum;
+	Point point(3, 4);
+	print("sdafasdf", 1, "afdsasdasd", 0.4, "sdfsad", point);
+
 
 }
 
