@@ -17,7 +17,7 @@ class Point {
 	int y;
 public:
 	Point(int x, int y) : x{ x }, y{ y } {}
-	friend ostream& operator<<(ostream& ost, Point point) {
+	friend ostream& operator<<(ostream& ost, Point& point) {
 		ost << "(" << point.x << ", " << point.y << ")";
 		return ost;
 	}
