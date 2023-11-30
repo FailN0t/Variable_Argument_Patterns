@@ -4,22 +4,19 @@
 #include <iostream>
 using namespace std;
 
-int getSum(int count, int first, ...) {
-    int sum = 0;
-    int* p;
-    p = &first;
-    while (count--)
-    {
-        sum += *p;
-        p+=2;
-    }
-    return sum;
+double getSum(double x) {
+	return x;
+}
+
+template<class... Args>
+double getSum(double x, Args... args) {
+	return x + getSum(args...);
 }
 
 int main()
 {
-    int sum = getSum(3, 5, 5, 5);
-    cout << sum;
+	double sum = getSum(1, 2, 3, 4, 5);
+	cout << sum;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
