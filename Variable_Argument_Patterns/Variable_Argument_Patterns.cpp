@@ -2,10 +2,24 @@
 //
 
 #include <iostream>
+using namespace std;
+
+int getSum(int count, int first, ...) {
+    int sum = 0;
+    int* p;
+    p = &first;
+    while (count--)
+    {
+        sum += *p;
+        p+=2;
+    }
+    return sum;
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int sum = getSum(3, 5, 5, 5);
+    cout << sum;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
